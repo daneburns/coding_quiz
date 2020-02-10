@@ -8,24 +8,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar navbar-light bg-none">
-        <a class="navbar-brand" href="#">
-          <img src="" width="30" height="30" class="d-inline-block align-top" alt="">
+    <nav class="navbar navbar-light bg-none d-flex">
+        <a class="navbar-brand mr-auto" href="#">
           View High Scores
         </a>
-        <ul class="navbar-nav">
-        <li>
-            <p class="nav-link">Timer: 0</p>
-          </li>
-        </ul>
+        <span class='navbar-text flex-shrink-1'>Timer:</span>
+        <span class='navbar-text flex-shrink-1 p-2' id='timerCount'>100</span>
       </nav>
     <div class="container d-flex align-items-center flex-column" id='bodyContainer'>
         <div class="row"><h1>Coding Quiz!</h1></div>
         <div class='row d-flex justify-content-center'><h4>Try to answer the following code-related questions within the time limit.<br>
-            Keep in mind that incorrect answers will penalize your scoretime by ten seconds!</h4></div>
-        <div class="row"><button class='btn btn-primary' id='start'>Start!</button></div>
-        
+            Keep in mind that incorrect answers will penalize your scoretime by ten seconds!</h4></div> 
+            <div class="row"><button class='btn btn-primary' id='start'>Start!</button></div>   
 </div>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
