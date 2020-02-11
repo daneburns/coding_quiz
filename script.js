@@ -90,7 +90,7 @@ function clearContainer() {
 }
 function scoreScreen(){
 idArray.length = 0;
-
+debugger;
   var child = bodyContainer.lastElementChild;
   while (child) {
     bodyContainer.removeChild(child);
@@ -99,24 +99,28 @@ idArray.length = 0;
 
 
 bodyContainer.remove()
-var poop = document.createElement('div')
-var poop2 = document.body.appendChild(poop)
+debugger;
+var poop2 = document.body.appendChild(makeRow)
 poop2.setAttribute('class', 'row d-flex justify-content-center')
 
-debugger;
-var poop3 = poop2.appendChild(h1)
-poop3.textContent = 'Your final score is: ' + timer
-timeEl.textContent = ''
-var forms = document.body.appendChild(makeRow)
-forms.setAttribute('class', 'form-group-div row justify-content-center')
-var input2 = forms.appendChild(input)
-input2.setAttribute('placeholder', 'Type your initials here')
-input2.setAttribute('type', 'text')
-var buttonDiv = document.body.appendChild(makeRow)
-buttonDiv.setAttribute('class', 'row justify-content-center p-3')
-var submitButton = buttonDiv.appendChild(button)
-submitButton.setAttribute('class', 'btn btn-primary justify-content-center p-2')
-submitButton.textContent = 'Submit'
+
+// var test5 = document.body.appendChild(makeRow)
+// test5.setAttribute('id', 'testId')
+// poop4 = test5.appendChild(p)
+// poop4.textContent = 'Your final score is: ' + timer
+// timeEl.textContent = ''
+// var forms = document.body.appendChild(makeRow)
+// forms.setAttribute('class', 'form-row-div row justify-content-center')
+// var input2 = forms.appendChild(input)
+// input2.setAttribute('placeholder', 'Type your initials here')
+// input2.setAttribute('type', 'text')
+// input2.setAttribute('class', 'mx-auto')
+// var buttonDiv = document.body.appendChild(makeRow)
+// buttonDiv.setAttribute('class', 'row justify-content-center p-3')
+// var submitButton = buttonDiv.appendChild(button)
+// submitButton.setAttribute('class', 'btn btn-primary justify-content-center p-2')
+// submitButton.textContent = 'Submit'
+// localStorage.setItem('DB', timer)
 
 }
 
@@ -219,20 +223,22 @@ bodyContainer.addEventListener("click", function(e) {
     ticker++;
     stopTime();
     timer -= 50;
+    
     scoreScreen();
-    var wrongText = document.body.appendChild(makeRow)
-    wrongText.setAttribute('class', 'row wrongText justify-content-center')
-    wrongText.textContent = 'WRONG!'
+    // var wrongText = document.body.appendChild(makeRow)
+    // wrongText.setAttribute('class', 'row wrongText justify-content-center')
+    // wrongText.textContent = 'WRONG!'
   }
   
  else if (event.target.classList.contains("correct") && questionsArrayMaster.length === 0) {
     
     stopTime();
     timer += 50;
+    bodyContainer.remove()
     scoreScreen();
-    var correctText = document.body.appendChild(makeRow)
-    correctText.setAttribute('class', 'row correctText justify-content-center')
-    correctText.textContent = 'Correct!'
+    // var correctText = document.body.appendChild(makeRow)
+    // correctText.setAttribute('class', 'row correctText justify-content-center')
+    // correctText.textContent = 'Correct!'
   } 
 
 });
