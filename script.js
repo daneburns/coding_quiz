@@ -6,7 +6,9 @@ var btn = document.createElement("button");
 var start = document.querySelector("#start");
 var timeEl = document.getElementById("timerCount");
 var timer = parseInt(timeEl.textContent);
-console.log(timeEl);
+var input = document.createElement('input')
+var buttons = document.getElementsByTagName('button')
+var button = document.createElement('button')
 
 idArray = [];
 questionBody = [
@@ -67,7 +69,7 @@ function stopTime() {
 function setTimeCorrect() {
   timerInterval = setInterval(function() {
     timer--;
-    console.log(timer);
+
     timeEl.textContent = timer;
 
     if (timer === 0) {
@@ -79,13 +81,43 @@ function setTimeCorrect() {
 
 function clearContainer() {
   idArray.length = 0;
-
   var child = bodyContainer.lastElementChild;
   while (child) {
     bodyContainer.removeChild(child);
     child = bodyContainer.lastElementChild;
   }
   populateQuestion(bodyContainer, questionsArray1);
+}
+function scoreScreen(){
+idArray.length = 0;
+
+  var child = bodyContainer.lastElementChild;
+  while (child) {
+    bodyContainer.removeChild(child);
+    child = bodyContainer.lastElementChild;
+  }
+
+
+bodyContainer.remove()
+var poop = document.createElement('div')
+var poop2 = document.body.appendChild(poop)
+poop2.setAttribute('class', 'row d-flex justify-content-center')
+
+debugger;
+var poop3 = poop2.appendChild(h1)
+poop3.textContent = 'Your final score is: ' + timer
+timeEl.textContent = ''
+var forms = document.body.appendChild(makeRow)
+forms.setAttribute('class', 'form-group-div row justify-content-center')
+var input2 = forms.appendChild(input)
+input2.setAttribute('placeholder', 'Type your initials here')
+input2.setAttribute('type', 'text')
+var buttonDiv = document.body.appendChild(makeRow)
+buttonDiv.setAttribute('class', 'row justify-content-center p-3')
+var submitButton = buttonDiv.appendChild(button)
+submitButton.setAttribute('class', 'btn btn-primary justify-content-center p-2')
+submitButton.textContent = 'Submit'
+
 }
 
 function clearContainer2(questionsArray) {
@@ -99,12 +131,6 @@ function clearContainer2(questionsArray) {
   }
   populateQuestion(bodyContainer, questionsArray);
 }
-
-// start.addEventListener("click", function(e) {
-//   event.preventDefault();
-//   clearContainer();
-//   setTime();
-// });
 
 function populateQuestion(parent, questionArray) {
   parent.appendChild(h1);
@@ -134,43 +160,81 @@ function populateQuestion(parent, questionArray) {
   //     buttons.classList.add('correct')
   // }
   var buttons = document.getElementsByClassName("btn");
-  console.log(buttons.length);
+  
   for (let i = 0; i < buttons.length; i++) {
     var buttonsArray = buttons[i];
-    console.log(buttonsArray.textContent);
+    
     if (buttonsArray.textContent === correctAnswers[0]) {
       buttonsArray.classList.add("correct");
       correctAnswers.shift();
-      console.log(correctAnswers);
+      
     }
   }
+  questionsArrayMaster.shift();
 }
 
 bodyContainer.addEventListener("click", function(e) {
   event.preventDefault();
-
-  if (event.target.classList.contains("correct")) {
-    ticker++;
-    stopTime();
-    timer += 50;
-    setTimeCorrect();
-    clearContainer2(questionsArrayMaster[ticker]);
-  } 
-  
-  else if(event.target === start){
+ 
+  if(event.target === start){
     event.preventDefault();
     clearContainer();
     setTime();
+    return;
 
   }
+
+  else if (event.target.classList.contains("correct") && questionsArrayMaster.length > 0) {
+    
+    stopTime();
+    timer += 50;
+    setTimeCorrect();
+    clearContainer2(questionsArrayMaster[0]);
+    var correctText = bodyContainer.appendChild(makeRow)
+    correctText.setAttribute('class', 'row correctText')
+    correctText.textContent = 'Correct!'
+  } 
+
   
-  else {
+   
+
+  if (event.target === bodyContainer){
+    
+  }
+ 
+ 
+  
+  else if(!event.target.classList.contains('correct') && questionsArrayMaster.length > 0){
     ticker++;
     stopTime();
     timer -= 50;
     setTimeCorrect();
-    clearContainer2(questionsArrayMaster[ticker]);
+    clearContainer2(questionsArrayMaster[0]);
+    var wrongText = bodyContainer.appendChild(makeRow)
+    wrongText.setAttribute('class', 'row wrongText')
+    wrongText.textContent = 'WRONG!'
   }
+
+  else if(!event.target.classList.contains('correct') && questionsArrayMaster.length === 0){
+    ticker++;
+    stopTime();
+    timer -= 50;
+    scoreScreen();
+    var wrongText = document.body.appendChild(makeRow)
+    wrongText.setAttribute('class', 'row wrongText justify-content-center')
+    wrongText.textContent = 'WRONG!'
+  }
+  
+ else if (event.target.classList.contains("correct") && questionsArrayMaster.length === 0) {
+    
+    stopTime();
+    timer += 50;
+    scoreScreen();
+    var correctText = document.body.appendChild(makeRow)
+    correctText.setAttribute('class', 'row correctText justify-content-center')
+    correctText.textContent = 'Correct!'
+  } 
+
 });
 
 

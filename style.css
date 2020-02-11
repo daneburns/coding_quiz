@@ -1,13 +1,14 @@
-.greenText {
+.correctText {
 
     color:green;
     size: large;
 
 }
 
-.redText {
+.wrongText {
 
     color:red;
     size: large;
 
 }
+
