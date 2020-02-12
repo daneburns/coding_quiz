@@ -37,10 +37,7 @@ scores.sort(function(a, b) {
 // });
 var tdOdd = [];
 var tdEven = [];
-console.log(scores[0][0])
-console.log(scores[0][1])
-console.log(scores[1][0])
-console.log(scores[1][1])
+
 
 
 for (let i = 0; i < td.length; i+=2) {
@@ -51,21 +48,36 @@ for (let i = 0; i < td.length; i+=2) {
 for (let i = 1; i < td.length; i+=2) {
     tdEven.push(td[i])
 }
-console.log(tdEven)
-console.log(tdOdd)
+
+
 
 for (let i = 0; i < scores.length; i++) {
-    tdEven[i].textContent = scores[i][i+1]
-     
+    tdEven[i].textContent = scores[i][1]
+    
 }
 
 for (let i = 0; i < scores.length; i++) {
-    tdOdd[i].textContent = scores[i][i]
-     
+    tdOdd[i].textContent = scores[i][0]
+    
 }
+
+// tdEven[0].textContent = scores[0][1]
+// tdOdd[0].textContent = scores[0][0]
+// tdEven[1].textContent = scores[1][1]
+// tdOdd[1].textContent = scores[1][0]
+// tdEven[2].textContent = scores[2][1]
+// tdOdd[2].textContent = scores[2][0]
+// tdEven[3].textContent = scores[3][1]
+// tdOdd[3].textContent = scores[3][0]
+// tdEven[4].textContent = scores[4][1]
+// tdOdd[4].textContent = scores[4][0]
+// tdEven[5].textContent = scores[5][1]
+// tdOdd[5].textContent = scores[5][0]
+     
 
 clearScores.addEventListener('click', function (e){
 
     localStorage.clear()
+    window.location = 'index.html'
 
 })
