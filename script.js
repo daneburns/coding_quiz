@@ -119,28 +119,7 @@ submit.addEventListener('click', function(e) {
 })
 
 
-// var poop2 = document.body.appendChild(makeRow)
-// poop2.setAttribute('class', 'row d-flex justify-content-center')
-// poop2.innerText = ' '
 
-
-// var test5 = document.body.appendChild(makeRow)
-// test5.setAttribute('id', 'testId')
-// poop4 = test5.appendChild(p)
-// poop4.textContent = 'Your final score is: ' + timer
-// timeEl.textContent = ''
-// var forms = document.body.appendChild(makeRow)
-// forms.setAttribute('class', 'form-row-div row justify-content-center')
-// var input2 = forms.appendChild(input)
-// input2.setAttribute('placeholder', 'Type your initials here')
-// input2.setAttribute('type', 'text')
-// input2.setAttribute('class', 'mx-auto')
-// var buttonDiv = document.body.appendChild(makeRow)
-// buttonDiv.setAttribute('class', 'row justify-content-center p-3')
-// var submitButton = buttonDiv.appendChild(button)
-// submitButton.setAttribute('class', 'btn btn-primary justify-content-center p-2')
-// submitButton.textContent = 'Submit'
-// localStorage.setItem('DB', timer)
 
 }
 
