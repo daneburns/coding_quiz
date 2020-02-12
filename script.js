@@ -90,18 +90,38 @@ function clearContainer() {
 }
 function scoreScreen(){
 idArray.length = 0;
-debugger;
   var child = bodyContainer.lastElementChild;
   while (child) {
     bodyContainer.removeChild(child);
     child = bodyContainer.lastElementChild;
   }
-
-
 bodyContainer.remove()
-debugger;
-var poop2 = document.body.appendChild(makeRow)
-poop2.setAttribute('class', 'row d-flex justify-content-center')
+var newBodyContainer = document.body.appendChild(document.createElement('div'))
+newBodyContainer.setAttribute('class', 'container justify-content-center')
+var newBodyContainerId = document.querySelector('.container')
+var score = newBodyContainerId.appendChild(document.createElement('div'))
+score.setAttribute('class', 'row justify-content-center')
+var scoreText = score.appendChild(document.createElement('h1'))
+scoreText.textContent = 'Your final score is: ' + timer
+var formRow = newBodyContainerId.appendChild(document.createElement('div'))
+formRow.setAttribute('class', 'row')
+var formCol = formRow.appendChild(document.createElement('div'))
+formCol.setAttribute('class', 'col-centered')
+var initials = formCol.appendChild(document.createElement('input'))
+var submit = formCol.appendChild(document.createElement('button'))
+submit.setAttribute('class', 'btn btn-primary')
+submit.textContent = 'Submit Score'
+initials.setAttribute('placeholder', 'Type initials here!')
+initials.setAttribute('class', 'col-centered')
+submit.addEventListener('click', function(e) {
+  localStorage.setItem(initials.value, timer)
+  window.location = 'highscores.html'
+})
+
+
+// var poop2 = document.body.appendChild(makeRow)
+// poop2.setAttribute('class', 'row d-flex justify-content-center')
+// poop2.innerText = ' '
 
 
 // var test5 = document.body.appendChild(makeRow)
@@ -225,9 +245,9 @@ bodyContainer.addEventListener("click", function(e) {
     timer -= 50;
     
     scoreScreen();
-    // var wrongText = document.body.appendChild(makeRow)
-    // wrongText.setAttribute('class', 'row wrongText justify-content-center')
-    // wrongText.textContent = 'WRONG!'
+    var wrongText = document.body.appendChild(makeRow)
+    wrongText.setAttribute('class', 'row wrongText justify-content-center')
+    wrongText.textContent = 'WRONG!'
   }
   
  else if (event.target.classList.contains("correct") && questionsArrayMaster.length === 0) {
@@ -236,9 +256,9 @@ bodyContainer.addEventListener("click", function(e) {
     timer += 50;
     bodyContainer.remove()
     scoreScreen();
-    // var correctText = document.body.appendChild(makeRow)
-    // correctText.setAttribute('class', 'row correctText justify-content-center')
-    // correctText.textContent = 'Correct!'
+    var correctText = document.body.appendChild(makeRow)
+    correctText.setAttribute('class', 'row correctText justify-content-center')
+    correctText.textContent = 'Correct!'
   } 
 
 });
