@@ -35,23 +35,34 @@ scores.sort(function(a, b) {
 //     tr[1 + i].textContent = element[1]
 
 // });
-var array1 = [];
-var array2 = [];
-console.log(scores[0[0]])
-for (let i = 0; i < scores.length; i++) {
-    
-    var array1 = [scores[0]]
-    console.log(array1)
+var tdOdd = [];
+var tdEven = [];
+console.log(scores[0][0])
+console.log(scores[0][1])
+console.log(scores[1][0])
+console.log(scores[1][1])
+
+
+for (let i = 0; i < td.length; i+=2) {
+    tdOdd.push(td[i])
      
 }
 
-for (let i = 0; i < td.length; i+=2) {
-    // console.log(td[i])
-    td[i].textContent = array[i]
-    td[i+1].textContent = array[i+1]
-    
+for (let i = 1; i < td.length; i+=2) {
+    tdEven.push(td[i])
+}
+console.log(tdEven)
+console.log(tdOdd)
+
+for (let i = 0; i < scores.length; i++) {
+    tdEven[i].textContent = scores[i][i+1]
+     
 }
 
+for (let i = 0; i < scores.length; i++) {
+    tdOdd[i].textContent = scores[i][i]
+     
+}
 
 clearScores.addEventListener('click', function (e){
 
